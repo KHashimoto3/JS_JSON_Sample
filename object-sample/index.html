@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="ja">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>オブジェクトの表示・操作のサンプル</title>
+  </head>
+  <body>
+    <h1>オブジェクトの表示・操作のサンプル</h1>
+    <h2>オブジェクトの中身を表示する</h2>
+    <p id="obj-name"></p>
+    <p id="obj-age"></p>
+
+    <script>
+      //名前と年齢を扱うオブジェクト（構造体みたいなもの） objはオブジェクト名で、中にプロパティーと値を入れている
+      const obj = {
+        name: "神奈川太郎",
+        age: 20,
+      };
+      //HTMLの要素を取得する（ここでは、オブジェクトの中身を表示したい場所をそれぞれ指定している）
+      const name = document.getElementById("obj-name");
+      const age = document.getElementById("obj-age");
+
+      //オブジェクトの中身を表示する    オブジェクト名.プロパティ名
+      name.textContent = "名前: " + obj.name;
+      age.textContent = "年齢: " + obj.age;
+    </script>
+  </body>
+</html>

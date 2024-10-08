@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="ja">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>JSONの表示・操作のサンプル</title>
+  </head>
+  <body>
+    <h1>JSONの表示・操作のサンプル</h1>
+    <h2>JSONの中身を表示する</h2>
+    <p id="obj-name"></p>
+    <p id="obj-age"></p>
+
+    <script>
+      //名前と年齢を扱うJSONファイルを読み込む
+      function loadJsonFile() {
+        const fileName = "student_data.json";
+        fetch(fileName) //fetchメソッドでJSONファイルを読み込む
+          .then((response) => {
+            //responseは、fetchメソッドを使って取得したデータ
+            return response.json(); //response.json()でJSONファイルの中身を取得
+          })
+          .then((jsonObj) => {
+            //jsonObjは、前のthenメソッドから来たJSONファイルの中身
+            //JSONファイルの中身をhtmlの要素に表示する
+            const name = document.getElementById("obj-name");
+            const age = document.getElementById("obj-age");
+            name.textContent = "名前: " + jsonObj.name;
+            age.textContent = "年齢: " + jsonObj.age;
+          })
+          .catch((error) => {
+            //エラーが発生した場合の処理
+            console.error("エラーが発生しました。", error);
+          });
+      }
+
+      //ページが読み込まれたらloadJsonFile関数を実行する
+      window.onload = loadJsonFile();
+    </script>
+  </body>
+</html>
